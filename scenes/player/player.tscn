@@ -133,6 +133,8 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(1, 0)
+collision_layer = 2
 script = ExtResource("1_aclio")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -141,4 +143,4 @@ shape = SubResource("CapsuleShape2D_v1mi5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lvvmo")
 animation = &"Idle"
-frame_progress = 0.61499
+frame_progress = 0.0176778
