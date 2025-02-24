@@ -1,17 +1,21 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgd6gp6ksu6ba"]
+[gd_scene load_steps=22 format=3 uid="uid://dgd6gp6ksu6ba"]
 
 [ext_resource type="Texture2D" uid="uid://c4gaec4dgc4s" path="res://assets/characters/character.png" id="1_54elx"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_aclio"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v1mi5"]
-radius = 69.0
-height = 260.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kw3ds"]
+radius = 60.0
+height = 231.667
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r340j"]
 atlas = ExtResource("1_54elx")
 region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kb1n1"]
+atlas = ExtResource("1_54elx")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgn0o"]
 atlas = ExtResource("1_54elx")
 region = Rect2(256, 0, 256, 256)
 
@@ -81,8 +85,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_kb1n1")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"IDLE",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgn0o")
+}],
+"loop": true,
+"name": &"JUMP",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -128,7 +140,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_uqjh5")
 }],
 "loop": true,
-"name": &"Run",
+"name": &"RUN",
 "speed": 10.0
 }]
 
@@ -139,9 +151,16 @@ collision_layer = 2
 script = ExtResource("1_aclio")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_v1mi5")
+position = Vector2(10, 10.8333)
+shape = SubResource("CapsuleShape2D_kw3ds")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(8.33333, 0)
 sprite_frames = SubResource("SpriteFrames_lvvmo")
-animation = &"Idle"
-frame_progress = 0.0176778
+animation = &"IDLE"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
