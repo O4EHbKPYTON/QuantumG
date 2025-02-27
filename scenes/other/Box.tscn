@@ -10,8 +10,7 @@ size = Vector2(190, 190)
 
 [node name="RigidBody" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 3
-mass = 100.0
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_7pjeq")
 linear_damp_mode = 1
 angular_damp_mode = 1
