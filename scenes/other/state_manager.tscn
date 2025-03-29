@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1q2fd4wq5b8j"]
+
+[ext_resource type="Script" path="res://scripts/other/state_manager.gd" id="1_q1phx"]
+[ext_resource type="Script" path="res://scripts/other/idle.gd" id="2_mwxta"]
+[ext_resource type="Script" path="res://scenes/other/jump.gd" id="3_1j5xh"]
+
+[node name="state_manager" type="Node"]
+script = ExtResource("1_q1phx")
+
+[node name="idle" type="Node" parent="."]
+script = ExtResource("2_mwxta")
+
+[node name="walk" type="Node" parent="."]
+
+[node name="fall" type="Node" parent="."]
+
+[node name="jump" type="Node" parent="."]
+script = ExtResource("3_1j5xh")
