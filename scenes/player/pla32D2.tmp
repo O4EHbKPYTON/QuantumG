@@ -1,12 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://dgd6gp6ksu6ba"]
+[gd_scene load_steps=22 format=3 uid="uid://dgd6gp6ksu6ba"]
 
 [ext_resource type="Texture2D" uid="uid://c4gaec4dgc4s" path="res://assets/characters/character.png" id="1_54elx"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_aclio"]
-[ext_resource type="PackedScene" uid="uid://d1q2fd4wq5b8j" path="res://scenes/other/state_manager.tscn" id="3_bnmtd"]
-[ext_resource type="Script" path="res://scripts/player/states/idle.gd" id="4_lkny1"]
-[ext_resource type="Script" path="res://scripts/player/states/jump.gd" id="5_hv87c"]
-[ext_resource type="Script" path="res://scripts/player/states/fall.gd" id="6_n37tj"]
-[ext_resource type="Script" path="res://scripts/player/states/move.gd" id="7_w0dh0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kw3ds"]
 radius = 60.0
@@ -90,7 +85,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kb1n1")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"IDLE",
 "speed": 1.0
 }, {
 "frames": [{
@@ -98,7 +93,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_wgn0o")
 }],
 "loop": true,
-"name": &"jump",
+"name": &"JUMP",
 "speed": 5.0
 }, {
 "frames": [{
@@ -145,7 +140,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_uqjh5")
 }],
 "loop": true,
-"name": &"move",
+"name": &"RUN",
 "speed": 10.0
 }]
 
@@ -160,44 +155,14 @@ script = ExtResource("1_aclio")
 position = Vector2(10, 10.8333)
 shape = SubResource("CapsuleShape2D_kw3ds")
 
-[node name="animations" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(8.33333, 0)
 sprite_frames = SubResource("SpriteFrames_lvvmo")
-animation = &"move"
+animation = &"IDLE"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
-
-[node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_bnmtd")]
-starting_state = NodePath("idle")
-
-[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
-script = ExtResource("4_lkny1")
-fall_state = NodePath("../fall")
-jump_state = NodePath("../jump")
-move_state = NodePath("../move")
-animation_name = "idle"
-
-[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
-script = ExtResource("5_hv87c")
-fall_state = NodePath("../fall")
-idle_state = NodePath("../idle")
-move_state = NodePath("../move")
-animation_name = "jump"
-
-[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "move_state")]
-script = ExtResource("6_n37tj")
-idle_state = NodePath("../idle")
-move_state = NodePath("../move")
-animation_name = "jump"
-
-[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
-script = ExtResource("7_w0dh0")
-fall_state = NodePath("../fall")
-idle_state = NodePath("../idle")
-jump_state = NodePath("../jump")
-animation_name = "move"
