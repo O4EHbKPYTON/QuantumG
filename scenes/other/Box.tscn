@@ -1,23 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1sbolvvt5j45"]
 
 [ext_resource type="Texture2D" uid="uid://dr820pm2kq4w1" path="res://assets/tilesets/Box.png" id="1_qx6mk"]
-[ext_resource type="Script" path="res://scripts/objects/box.gd" id="1_rgseh"]
+[ext_resource type="Script" uid="uid://lmr0cpaaulvn" path="res://scripts/objects/box.gd" id="1_rgseh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7pjeq"]
+friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ou3ar"]
 size = Vector2(190, 190)
 
-[node name="RigidBody" type="RigidBody2D"]
+[node name="BoxR" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_7pjeq")
-linear_damp_mode = 1
-angular_damp_mode = 1
 script = ExtResource("1_rgseh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 1
 position = Vector2(96, -96)
 shape = SubResource("RectangleShape2D_ou3ar")
 

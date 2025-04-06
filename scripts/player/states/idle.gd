@@ -4,6 +4,8 @@ extends State
 @export var jump_state: State
 @export var move_state: State
 
+@onready var animations: AnimatedSprite2D = %animations
+
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
