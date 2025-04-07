@@ -164,7 +164,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_xwslc"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_usfgr")
 sources/2 = SubResource("TileSetAtlasSource_rbx5d")
 sources/3 = SubResource("TileSetAtlasSource_akth6")
@@ -184,5 +184,5 @@ texture = ExtResource("4_ttajw")
 [node name="Player" parent="." instance=ExtResource("5_yxlqj")]
 position = Vector2(736, 771)
 
-[node name="RigidBody" parent="." instance=ExtResource("6_l035o")]
+[node name="Box" parent="." instance=ExtResource("6_l035o")]
 position = Vector2(257, 896)

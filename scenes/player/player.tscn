@@ -1,16 +1,24 @@
-[gd_scene load_steps=27 format=3 uid="uid://dgd6gp6ksu6ba"]
+[gd_scene load_steps=34 format=3 uid="uid://dgd6gp6ksu6ba"]
 
 [ext_resource type="Texture2D" uid="uid://c4gaec4dgc4s" path="res://assets/characters/character.png" id="1_54elx"]
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_aclio"]
+[ext_resource type="Script" uid="uid://2h00dtw67pp" path="res://scripts/player/player.gd" id="1_aclio"]
 [ext_resource type="PackedScene" uid="uid://d1q2fd4wq5b8j" path="res://scenes/other/state_manager.tscn" id="3_bnmtd"]
-[ext_resource type="Script" path="res://scripts/player/states/idle.gd" id="4_lkny1"]
-[ext_resource type="Script" path="res://scripts/player/states/jump.gd" id="5_hv87c"]
-[ext_resource type="Script" path="res://scripts/player/states/fall.gd" id="6_n37tj"]
-[ext_resource type="Script" path="res://scripts/player/states/move.gd" id="7_w0dh0"]
+[ext_resource type="Script" uid="uid://q2hxn6c7k6yt" path="res://scripts/player/states/idle.gd" id="4_lkny1"]
+[ext_resource type="Script" uid="uid://bf56c22agyax5" path="res://scripts/player/states/jump.gd" id="5_hv87c"]
+[ext_resource type="Script" uid="uid://x2lukneg8fyv" path="res://scripts/player/states/fall.gd" id="6_n37tj"]
+[ext_resource type="Script" uid="uid://bdubcuybn50qp" path="res://scripts/player/states/move.gd" id="7_w0dh0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kw3ds"]
 radius = 60.0
 height = 231.667
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
+atlas = ExtResource("1_54elx")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
+atlas = ExtResource("1_54elx")
+region = Rect2(768, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r340j"]
 atlas = ExtResource("1_54elx")
@@ -20,9 +28,29 @@ region = Rect2(0, 0, 256, 256)
 atlas = ExtResource("1_54elx")
 region = Rect2(256, 0, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wgn0o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
 atlas = ExtResource("1_54elx")
-region = Rect2(256, 0, 256, 256)
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
+atlas = ExtResource("1_54elx")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
+atlas = ExtResource("1_54elx")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("1_54elx")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = ExtResource("1_54elx")
+region = Rect2(1024, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
+atlas = ExtResource("1_54elx")
+region = Rect2(1280, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpt4i"]
 atlas = ExtResource("1_54elx")
@@ -84,6 +112,17 @@ region = Rect2(768, 256, 256, 256)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gx1jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugbui")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_r340j")
 }, {
 "duration": 1.0,
@@ -95,11 +134,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wgn0o")
+"texture": SubResource("AtlasTexture_0owmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qek5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gtgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je7p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm80t")
 }],
 "loop": true,
 "name": &"jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -164,10 +218,10 @@ shape = SubResource("CapsuleShape2D_kw3ds")
 unique_name_in_owner = true
 position = Vector2(8.33333, 0)
 sprite_frames = SubResource("SpriteFrames_lvvmo")
-animation = &"move"
+animation = &"fall"
+frame_progress = 0.348036
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
